@@ -3,22 +3,22 @@
 {% block title %}{{ post.location }}. {{ post.date }}{% endblock %}
 
 {% block content %}
-      <div class="container py-5">
-        <article>
-          <ul>
-            <li>
-              Место: {{ post.location|default:"Место не указано" }}              
-            </li>
-            <li>
-              Дата: {{ post.date|default:"Дата не указана" }}
-            </li>
-            <li>
-              Категория: <a href="{% url 'blog:category_posts' category_slug=post.category %}">{{ post.category }}</a>
-            </li>
-          </ul>         
-          <p>
-            {{ post.text|linebreaksbr }}
-          </p>          
-        </article>                
-      </div>
+  <div class="container py-5">
+    <article>
+      <ul>
+        <li>
+          Место: {{ post.location|default:"Место не указано" }}              
+        </li>
+        <li>
+          Дата: {{ post.date|default:"Дата не указана" }}
+        </li>
+        <li>
+          Категория: <a href="{% url 'blog:category_posts' category_slug=post.category %}">{{ post.category }}</a>
+        </li>
+      </ul>         
+      <p>
+        {{ post.text|linebreaksbr }}
+      </p>          
+    </article>                
+  </div>
 {% endblock %}
