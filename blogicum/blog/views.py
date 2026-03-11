@@ -43,15 +43,19 @@ posts = [
     },
 ]
 
+posts_by_id = {post["id"]: post for post in posts}
+
 
 def index(request):
     return render(request, "blog/index.html", {"posts": reversed(posts)})
 
 
 def post_detail(request, post_id):
-    if len(posts) <= post_id:
-        raise Http404("Пост не найден")
-    return render(request, "blog/detail.html", {"post": posts[post_id]})
+    try:
+        post = posts_by_id[post_id]
+    except KeyError:
+        raise Http404("Пост не найден(поста с таким id не существует)")
+    return render(request, "blog/detail.html", {"post": post})
 
 
 def category_posts(request, category_slug):
